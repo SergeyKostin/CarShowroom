@@ -1,6 +1,12 @@
 package model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "request")
 public class Request {
+    @Id
+    private String id;
     private Client client;
     private String goal;
     private String model;
