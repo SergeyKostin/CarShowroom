@@ -10,7 +10,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Request a ${goal} by Aydi ${model}</div>
                 <div class="panel-body">
-                    <form action="" method="post">
+                    <form action="/request" method="post">
                         <div class="form-group">
                             <label>You name:</label>
                             <input type="text" class="form-control" name="clientName">
@@ -31,6 +31,10 @@
                         <div class="form-group">
                             <label>You telephone:</label>
                             <input type="text" class="form-control" name="telephone">
+                        </div>
+                        <div class="form-group">
+                            <label>Date and time:</label>
+                            <input type="datetime-local" class="form-control" name="dateTime">
                         </div>
 
                         <input type="hidden" name="goal" value="${goal}">

@@ -10,11 +10,21 @@ public class Request {
     private Client client;
     private String goal;
     private String model;
+    private String dateTime;
 
-    public Request(Client client, String goal, String model) {
+    public Request(Client client, String goal, String model, String dateTime) {
         this.client = client;
         this.goal = goal;
         this.model = model;
+        this.dateTime = dateTime;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     public Client getClient() {

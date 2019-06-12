@@ -30,6 +30,9 @@ public class Application implements CommandLineRunner {
 
     private Set<String> modelList = new HashSet<String>();
 
+    @Autowired
+    Approve approve;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -63,11 +66,12 @@ public class Application implements CommandLineRunner {
                              @RequestParam("email") String email,
                              @RequestParam("telephone") String telephone,
                              @RequestParam("goal") String goal,
-                             @RequestParam("model") String model) {
+                             @RequestParam("model") String model,
+                             @RequestParam("dateTime") String dateTime) {
         Client client = new Client(clientName, clientPatronymic, clientSurname, email, telephone);
-        Request request = new Request(client, goal, model);
+        Request request = new Request(client, goal, model, dateTime);
         this.clientRepository.save(client);
-        this.requestRepository.save(request);
+        approve.setApprove(requestRepository, request);
         init();
         map.put("modelList", modelList);
         return "modelList";
@@ -82,7 +86,7 @@ public class Application implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         carRepository.deleteAll();
         carRepository.save(CreateTestDateCars.getCarsListTest());
     }
